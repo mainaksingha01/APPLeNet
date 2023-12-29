@@ -31,10 +31,10 @@ APPLeNet is composed of a text encoder, an image encoder, and an injection block
 
 ## Released Datasets (Version-2):
 - For Domain Generalization:
-  - [PatternNetv2]([https://sites.google.com/view/zhouwx/dataset](https://drive.google.com/file/d/1bukts4nv_ZV7opYL3dFETD66EueiFaNo/view?usp=sharing))
+  - [PatternNetv2](https://drive.google.com/file/d/1bukts4nv_ZV7opYL3dFETD66EueiFaNo/view?usp=sharing)
   - [RSICDv2](https://drive.google.com/file/d/1cHQPA7X_jX4tw8vFgEON1SDn_MGf3uv2/view?usp=sharing)
-  - [RESISC45v2]([https://www.tensorflow.org/datasets/catalog/resisc45](https://drive.google.com/file/d/1B7GTf-Pz6ggaIhm9ShQXfXTe0GilfiQA/view?usp=sharing)https://drive.google.com/file/d/1B7GTf-Pz6ggaIhm9ShQXfXTe0GilfiQA/view?usp=sharing)
-  - [MLRSNetv2]([https://data.mendeley.com/datasets/7j9bv9vwsx/3](https://drive.google.com/file/d/18uaXD5CxnAyYPOswctf6_izcIO8VF4oI/view?usp=sharing)https://drive.google.com/file/d/18uaXD5CxnAyYPOswctf6_izcIO8VF4oI/view?usp=sharing)
+  - [RESISC45v2](https://drive.google.com/file/d/1B7GTf-Pz6ggaIhm9ShQXfXTe0GilfiQA/view?usp=sharing)
+  - [MLRSNetv2](https://drive.google.com/file/d/18uaXD5CxnAyYPOswctf6_izcIO8VF4oI/view?usp=sharing)
  
 ## Code
 
