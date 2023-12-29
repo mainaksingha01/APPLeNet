@@ -46,6 +46,11 @@ APPLeNet is composed of a text encoder, an image encoder, and an injection block
 ```shell
 $ cd scripts
 $ bash base2new_train.sh patternnet 1
+$ bash base2new_test.sh patternnet 1
+$ bash crossdataset_train.sh patternnet 1
+$ bash crossdataset_test.sh rsicd 1
+$ bash domaingen_train.sh patternnetv2 1
+$ bash domaingen_test.sh rsicdv2 1
 ```
 
 ## Results
