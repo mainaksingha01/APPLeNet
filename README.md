@@ -50,15 +50,15 @@ $ bash base2new_train.sh patternnet 1
 
 ## Results
 
-# Base-to-New Class Generalization
+### Base-to-New Class Generalization
 
 ![base2new](https://github.com/mainaksingha01/APPLeNet/blob/master/images/base2new.png)
 
-# Cross Dataset Generalization
+### Cross Dataset Generalization
 
 ![crossdataset](https://github.com/mainaksingha01/APPLeNet/blob/master/images/crossdataset.png)
 
-# Domain Generalization
+### Domain Generalization
 
 ![domaingen](https://github.com/mainaksingha01/APPLeNet/blob/master/images/domaingen.png)
 
