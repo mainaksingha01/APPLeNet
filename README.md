@@ -10,7 +10,7 @@ Official repository of APPLeNet, which is one of the first works in Remote Sensi
 
 ## Abstract
 
-![teaser](https://github.com/mainaksingha01/APPLeNet/blob/master/images/teaser.png)
+![teaser](<img src="https://github.com/mainaksingha01/APPLeNet/blob/master/images/teaser.png" width="300">)
 
 In recent years, the success of large-scale visionlanguage models (VLMs) such as CLIP has led to their increased usage in various computer vision tasks. These models enable zero-shot inference through carefully crafted instructional text prompts without task-specific supervision.
 However, the potential of VLMs for generalization tasks in remote sensing (RS) has not been fully realized. To address this research gap, we propose a novel image-conditioned prompt learning strategy called the Visual Attention Parameterized Prompts Learning Network (APPLeNet). APPLeNet emphasizes the importance of multi-scale feature learning in RS scene classification and disentangles visual style and content primitives for domain generalization tasks. To achieve this, APPLeNet combines visual content features obtained from different layers of the vision encoder and style properties obtained from feature statistics of domain-specific batches. An attention-driven injection module is further introduced to generate visual tokens from this information. We also introduce an anticorrelation regularizer to ensure discrimination among the token embeddings, as this visual information is combined with the textual tokens. To validate APPLeNet, we curated
@@ -18,7 +18,7 @@ four available RS benchmarks and introduced experimental protocols and datasets 
 
 ## Architecture
 
-![arch](https://github.com/mainaksingha01/APPLeNet/blob/master/images/applenet.png)
+![architecture](https://github.com/mainaksingha01/APPLeNet/blob/master/images/applenet.png)
 
 APPLeNet is composed of a text encoder, an image encoder, and an injection block designed for multi-scale visual feature refinement. The image encoder produces multi-level visual content features, and the batch statistics for a domain as the style features, that are passed through a residual attention-based injection block.
 
@@ -73,6 +73,7 @@ Please cite our work if you use our work. Thanks.
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   year={2023}
 }
+```
 
 ## Acknowledgements
 
