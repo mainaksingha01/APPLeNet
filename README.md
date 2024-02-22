@@ -4,7 +4,7 @@ Official repository of APPLeNet, which is one of the first works in Remote Sensi
 
 ## **CVPRw 2023**
 
-[![paper](https://img.shields.io/badge/arXiv-Paper-brightgreen)](https://openaccess.thecvf.com/content/CVPR2023W/EarthVision/papers/Jha_APPLeNet_Visual_Attention_Parameterized_Prompt_Learning_for_Few-Shot_Remote_Sensing_CVPRW_2023_paper.pdf)
+[![paper](https://img.shields.io/badge/Conference-Paper-blue)](https://openaccess.thecvf.com/content/CVPR2023W/EarthVision/papers/Jha_APPLeNet_Visual_Attention_Parameterized_Prompt_Learning_for_Few-Shot_Remote_Sensing_CVPRW_2023_paper.pdf)
 [![supplement](https://img.shields.io/badge/Supplementary-Material-F9D371)](https://openaccess.thecvf.com/content/CVPR2023W/EarthVision/supplemental/Jha_APPLeNet_Visual_Attention_CVPRW_2023_supplemental.pdf)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-brightgreen)](https://arxiv.org/abs/2304.05995)
 
