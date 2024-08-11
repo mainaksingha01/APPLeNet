@@ -40,7 +40,6 @@ APPLeNet is composed of a text encoder, an image encoder, and an injection block
  - `json` folder contains the data splits of the datasets. Put these files inside each of the data folders.
  - Clone this repository [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch) inside this repo for the metrices.
  - Replace the `dassl/engine/trainer.py` file with the modified [trainer](https://github.com/mainaksingha01/APPLeNet/blob/master/dassl/engine/trainer.py) file.
- - `scripts` folder holds the scripts of each of the generalization tasks both for training and testing.
 
 ```shell
 $ cd scripts
