@@ -135,19 +135,26 @@ class ModifiedResNet(nn.Module):
     def forward(self, x):
         def stem(x):
             for conv, bn in [(self.conv1, self.bn1), (self.conv2, self.bn2), (self.conv3, self.bn3)]:
-                x = self.relu(bn(conv(x)))
+                x = conv(x)
+                x = bn(x)
+                x = self.relu(x)
+                # x = self.relu(bn(conv(x)))
             x = self.avgpool(x)
             return x
 
         x = x.type(self.conv1.weight.dtype)
         x = stem(x)
-        x = self.layer1(x)
-        x = self.layer2(x)
-        x = self.layer3(x)
-        x = self.layer4(x)
-        x = self.attnpool(x)
-
-        return x
+        data = []
+        x1 = self.layer1(x)
+        data.append(x1)
+        x2 = self.layer2(x1)
+        data.append(x2)
+        x3 = self.layer3(x2)
+        data.append(x3)
+        x4 = self.layer4(x3)
+        data.append(x4)
+        feat = self.attnpool(x4)
+        return feat, data
 
 
 class LayerNorm(nn.LayerNorm):
@@ -178,9 +185,10 @@ class ResidualAttentionBlock(nn.Module):
         self.ln_2 = LayerNorm(d_model)
         self.attn_mask = attn_mask
 
-    def attention(self, x: torch.Tensor):
+    def attention(self, x: torch.Tensor):      
         self.attn_mask = self.attn_mask.to(dtype=x.dtype, device=x.device) if self.attn_mask is not None else None
-        return self.attn(x, x, x, need_weights=False, attn_mask=self.attn_mask)[0]
+        y = self.attn(x, x, x, need_weights=False, attn_mask=self.attn_mask)[0]
+        return y
 
     def forward(self, x: torch.Tensor):
         x = x + self.attention(self.ln_1(x))
@@ -196,7 +204,12 @@ class Transformer(nn.Module):
         self.resblocks = nn.Sequential(*[ResidualAttentionBlock(width, heads, attn_mask) for _ in range(layers)])
 
     def forward(self, x: torch.Tensor):
-        return self.resblocks(x)
+        data=[]
+        for layer in self.resblocks:
+            x = layer(x)
+            data.append(x.detach().permute(1,0,2))
+        data = torch.stack(data)
+        return x, data
 
 
 class VisionTransformer(nn.Module):
@@ -221,19 +234,19 @@ class VisionTransformer(nn.Module):
         x = x.reshape(x.shape[0], x.shape[1], -1)  # shape = [*, width, grid ** 2]
         x = x.permute(0, 2, 1)  # shape = [*, grid ** 2, width]
         x = torch.cat([self.class_embedding.to(x.dtype) + torch.zeros(x.shape[0], 1, x.shape[-1], dtype=x.dtype, device=x.device), x], dim=1)  # shape = [*, grid ** 2 + 1, width]
-        x = x + self.positional_embedding.to(x.dtype)
+        x = x + self.positional_embedding.to(x.dtype) 
         x = self.ln_pre(x)
 
         x = x.permute(1, 0, 2)  # NLD -> LND
-        x = self.transformer(x)
+        x, data = self.transformer(x)
         x = x.permute(1, 0, 2)  # LND -> NLD
 
         x = self.ln_post(x[:, 0, :])
 
         if self.proj is not None:
+            x = x.to(torch.float16)
             x = x @ self.proj
-
-        return x
+        return x, data
 
 
 class CLIP(nn.Module):
@@ -336,12 +349,11 @@ class CLIP(nn.Module):
     def encode_image(self, image):
         return self.visual(image.type(self.dtype))
 
-    def encode_text(self, text):
+    def encode_text(self, text): 
         x = self.token_embedding(text).type(self.dtype)  # [batch_size, n_ctx, d_model]
-
-        x = x + self.positional_embedding.type(self.dtype)
+        x = x + self.positional_embedding.type(self.dtype) 
         x = x.permute(1, 0, 2)  # NLD -> LND
-        x = self.transformer(x)
+        x, temp = self.transformer(x)
         x = x.permute(1, 0, 2)  # LND -> NLD
         x = self.ln_final(x).type(self.dtype)
 
