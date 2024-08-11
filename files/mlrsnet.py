@@ -123,7 +123,7 @@ class MLRSNet(DatasetBase):
             self.dataset_dir, "mlrsnet.json")
         self.shots_dir = os.path.join(
             self.dataset_dir, "shots") 
-        # mkdir_if_missing(self.shots_dir)
+        mkdir_if_missing(self.shots_dir)
 
         if os.path.exists(self.split_path):
             train, val, test = read_split(
