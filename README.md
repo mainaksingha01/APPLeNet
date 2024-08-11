@@ -36,10 +36,7 @@ APPLeNet is composed of a text encoder, an image encoder, and an injection block
   - [RESISC45v2](https://drive.google.com/file/d/1Zfsko5swyQqu5HiuRwZe5jIGoUKfBgxq/view?usp=sharing)
   - [MLRSNetv2](https://drive.google.com/file/d/1OJrAwU1i9hYe7kEsHIIq_TodJDiwnnAz/view?usp=sharing)
  
-## Code
-
- - `files` folder contains the dataloader files of each datasets.
- - `models` folder contains the code of our model.
+## Code Instructions
  - `json` folder contains the data splits of the datasets. Put these files inside each of the data folders.
  - Clone this repository [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch) inside this repo for the metrices.
  - Replace the `dassl/engine/trainer.py` file with the modified [trainer](https://github.com/mainaksingha01/APPLeNet/blob/master/dassl/engine/trainer.py) file.
