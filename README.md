@@ -35,7 +35,18 @@ APPLeNet is composed of a text encoder, an image encoder, and an injection block
   - [RSICDv2](https://drive.google.com/file/d/1uhlTHQCHkE0KD04YGBAKsxPgG14eQez_/view?usp=sharing)
   - [RESISC45v2](https://drive.google.com/file/d/1Zfsko5swyQqu5HiuRwZe5jIGoUKfBgxq/view?usp=sharing)
   - [MLRSNetv2](https://drive.google.com/file/d/1OJrAwU1i9hYe7kEsHIIq_TodJDiwnnAz/view?usp=sharing)
- 
+
+## How to install
+
+### Create your environment:
+
+```bash
+$ conda create -n applenet python=3.8
+$ conda activate applenet
+$ conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=10.2 -c pytorch
+$ pip install -r requirements.txt
+```
+
 ## Code Instructions
  - `json` folder contains the data splits of the datasets. Put these files inside each of the data folders.
  - Clone the [dassl](https://github.com/KaiyangZhou/Dassl.pytorch/tree/master/dassl) folder inside this repo.
